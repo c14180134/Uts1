@@ -6,15 +6,32 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-item>
+  <ion-label position="fixed">Judul</ion-label>
+  <ion-input placeholder="input here" name="title" [(ngModel)]="Judul"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label>Notes</ion-label>
+  <ion-textarea rows="6" cols="30" placeholder="Enter any notes here..." [(ngModel)]="Isi"></ion-textarea>
+</ion-item>
+
+<ion-item>
+  <ion-label position="fixed">Nilai</ion-label>
+  <ion-input placeholder="input here" name="title" [(ngModel)]="Nilai"></ion-input>
+</ion-item>
+
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item-sliding *ngFor="let data of isiData | async;index as position">
  
-      <ion-item >
-        <h1 (click)="kliked(data.judul)">{{data.judul}}</h1>
-        <br><h2>{{data.isi}}</h2>
-        
+      <ion-item>
+      <h2 (click)="kliked(data.judul,data.isi,data.nilai)">{{data.judul}}</h2>
+      <h1>|||</h1>
+      <p>{{data.isi}}</p>
       </ion-item>
+      
+      
       
       <ion-item-options side="end">
         <ion-item-option (click)="delete(data.judul)">DELETE</ion-item-option>
