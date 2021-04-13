@@ -13,16 +13,27 @@ export class Tab2Page {
   Judul:string;
   Isi:string;
   Nilai:string;
-  
+  paten:string
+  Tanggal:Date
   isiDataColl : AngularFirestoreCollection<data>;
   constructor(afs:AngularFirestore) {
     this.isiDataColl = afs.collection('dataNote');
     this.isiData = this.isiDataColl.valueChanges();
   }
-  kliked(ganti:string,si:string,Nil:string){
+  kliked(ganti:string,si:string,Nil:string,tgl:Date){
     this.Judul=ganti
     this.Isi=si
     this.Nilai=Nil
+    this.paten=ganti
+    this.Tanggal=tgl
+  }
+  simpan(){
+    this.isiDataColl.doc(this.paten).set({
+      judul:this.Judul,
+      isi:this.Isi,
+      tanggal:this.Tanggal,
+      nilai:this.Nilai
+    });
   }
   delete(i:string){
     console.log(i)
