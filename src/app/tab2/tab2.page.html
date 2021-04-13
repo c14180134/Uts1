@@ -7,11 +7,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    <ion-item-sliding *ngFor="let data of isiData | async;index as position">
+ 
+      <ion-item >
+        <h1 (click)="kliked(data.judul)">{{data.judul}}</h1>
+        <br><h2>{{data.isi}}</h2>
+        
+      </ion-item>
+      
+      <ion-item-options side="end">
+        <ion-item-option (click)="delete(data.judul)">DELETE</ion-item-option>
+      </ion-item-options>
+          
+    </ion-item-sliding>
+    
+  </ion-list>
 </ion-content>
