@@ -31,7 +31,8 @@ export class Tab1Page {
       judul:this.Judul,
       isi:this.Isi,
       tanggal:this.tanggal,
-      nilai:this.Nilai
+      nilai:this.Nilai,
+      paten:this.Judul
     });
     const imageFilepath = `${this.Judul}/${this.galery.fotoing.filePath}`;
     this.afStorage.upload(imageFilepath, this.galery.fotoing.dataImage).then(() =>{
@@ -51,5 +52,6 @@ interface data{
   judul : string,
   isi :string,
   tanggal : Date,
-  nilai : string
+  nilai : string,
+  paten:string
 }

@@ -1,16 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-label position="stacked">Tanggal</ion-label>
-    <ion-input [(ngModel)] ="tanggal" type="date"></ion-input>
-  </ion-item>
-
   <ion-item>
     <ion-label position="fixed">Judul</ion-label>
     <ion-input placeholder="input here" name="title" [(ngModel)]="Judul"></ion-input>
@@ -26,12 +22,20 @@
     <ion-input placeholder="input here" name="title" [(ngModel)]="Nilai"></ion-input>
   </ion-item>
 
-  <ion-button (click)="tamba()">
+  <ion-button (click)="tambafoto()">
     Foto
     <ion-icon  slot="start" name="camera-sharp"></ion-icon>
   </ion-button>
 
   <ion-button (click)="simpan()" expand="full">SAVE</ion-button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" *ngFor="let iFoto of urlImageStorage; index as position">
+        <ion-img [src] = "iFoto"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,7 +17,7 @@ export class Tab2Page {
   paten:string
   Tanggal:Date
   isiDataColl : AngularFirestoreCollection<data>;
-  constructor(afs:AngularFirestore) {
+  constructor(afs:AngularFirestore,public router : Router,public route : ActivatedRoute) {
     this.isiDataColl = afs.collection('dataNote');
     this.isiData = this.isiDataColl.valueChanges();
   }
@@ -32,7 +33,8 @@ export class Tab2Page {
       judul:this.Judul,
       isi:this.Isi,
       tanggal:this.Tanggal,
-      nilai:this.Nilai
+      nilai:this.Nilai,
+      paten:this.paten
     });
   }
   delete(i:string){
@@ -40,11 +42,17 @@ export class Tab2Page {
     
    this.isiDataColl.doc(i).delete();
   }
+  detail(titel:string,det:string,skor:string,tgal:Date,paten:string){
+    console.log(titel,det,skor,tgal,paten)
+    this.router.navigate(['/tab4', titel,det,skor,tgal,paten]);  
+  }
+
 }
 
 interface data{
   judul : string,
   isi :string,
   tanggal : Date,
-  nilai : string
+  nilai : string,
+  paten:string
 }

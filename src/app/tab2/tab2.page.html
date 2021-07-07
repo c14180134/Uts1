@@ -26,13 +26,13 @@
 
 <ion-content [fullscreen]="true">
   <h1>List</h1>
+  <p>Swipe to delete</p>
   <ion-list>
     <ion-item-sliding *ngFor="let data of isiData | async;index as position">
  
-      <ion-item>
-      <h2 (click)="kliked(data.judul,data.isi,data.nilai,data.tanggal)">{{data.judul}}</h2>
-      <h1>|||</h1>
-      <p>{{data.isi}}</p>
+      <ion-item (click)="kliked(data.judul,data.isi,data.nilai,data.tanggal)">
+      <h2 >{{data.judul}}</h2>
+      <ion-button slot="end" (click)="detail(data.judul,data.isi,data.nilai,data.tanggal,data.paten)">MORE DETAIL</ion-button>
       </ion-item>
       
       
